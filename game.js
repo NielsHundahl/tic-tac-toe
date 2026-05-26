@@ -34,7 +34,8 @@ function handleClick(e) {
   if (result) {
     gameOver = true;
     if (result.winner === 'draw') {
-      statusEl.textContent = "It's a draw!";
+      statusEl.textContent = "You drew!";
+      statusEl.classList.add('draw');
     } else {
       statusEl.textContent = `Player ${result.winner} wins! 🎉`;
       result.combo.forEach(i => cells[i].classList.add('win'));
@@ -50,6 +51,7 @@ function restart() {
   currentPlayer = 'X';
   gameOver = false;
   statusEl.textContent = "Player X's turn";
+  statusEl.classList.remove('draw');
   cells.forEach(cell => {
     cell.textContent = '';
     cell.className = 'cell';
